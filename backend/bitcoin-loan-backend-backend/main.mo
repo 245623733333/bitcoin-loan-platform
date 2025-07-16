@@ -9,7 +9,6 @@ actor {
 
   stable var users: [User] = [];
 
-  // Register a new user
   public func registerUser(name: Text): async Text {
     let exists = Array.filter<User>(users, func(u: User): Bool {
       u.name == name
@@ -29,12 +28,10 @@ actor {
     return "User registered: " # name;
   };
 
-  // Get all registered users
   public func getAllUsers(): async [User] {
     return users;
   };
 
-  // Get a specific user by name
   public func getUser(name: Text): async ?User {
     for (user in users.vals()) {
       if (user.name == name) {
@@ -44,7 +41,6 @@ actor {
     return null;
   };
 
-  // Delete a user by name
   public func deleteUser(name: Text): async Text {
     let filtered = Array.filter<User>(users, func(u: User): Bool {
       u.name != name
@@ -58,7 +54,32 @@ actor {
     return "User deleted: " # name;
   };
 
-  // Repay loan from a user's BTC balance
+  public func depositBTC(name: Text, amount: Nat): async Text {
+    var updatedUsers: [User] = [];
+    var found: Bool = false;
+
+    for (user in users.vals()) {
+      if (user.name == name) {
+        let updatedUser: User = {
+          name = user.name;
+          btcBalance = user.btcBalance + amount;
+          loan = user.loan;
+        };
+        updatedUsers := Array.append(updatedUsers, [updatedUser]);
+        found := true;
+      } else {
+        updatedUsers := Array.append(updatedUsers, [user]);
+      };
+    };
+
+    if (not found) {
+      return "User not found.";
+    };
+
+    users := updatedUsers;
+    return "Deposited " # debug_show(amount) # " BTC to " # name;
+  };
+
   public func repayLoan(name: Text, amount: Nat): async Text {
     var updatedUsers: [User] = [];
     var repaid: Bool = false;
@@ -91,5 +112,31 @@ actor {
 
     users := updatedUsers;
     return "Loan repayment successful for " # name;
+  };
+
+  public func takeLoan(name: Text, amount: Nat): async Text {
+    var updatedUsers: [User] = [];
+    var found: Bool = false;
+
+    for (user in users.vals()) {
+      if (user.name == name) {
+        let updatedUser: User = {
+          name = user.name;
+          btcBalance = user.btcBalance;
+          loan = user.loan + amount;
+        };
+        updatedUsers := Array.append(updatedUsers, [updatedUser]);
+        found := true;
+      } else {
+        updatedUsers := Array.append(updatedUsers, [user]);
+      };
+    };
+
+    if (not found) {
+      return "User not found.";
+    };
+
+    users := updatedUsers;
+    return "Loan of " # debug_show(amount) # " granted to " # name;
   };
 }
