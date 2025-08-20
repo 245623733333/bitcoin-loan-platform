@@ -2,12 +2,6 @@
 
 A next-generation DeFi lending platform powered by the **Internet Computer Protocol (ICP)** that enables users to unlock liquidity without selling their Bitcoin. This project uses non-custodial smart contracts for secure, decentralized loan issuance.
 
-## 🌐 Live Project
-
-📎 [Frontend Hosted on GitHub Pages](https://245623733333.github.io/bitcoin-loan-platform/)
-
-> **Note:** This is the frontend UI only. Backend logic and Bitcoin integration run locally using `dfx`.
-
 The Bitcoin Loan Platform is a decentralized Web3 application built using the Internet Computer Protocol (ICP) and Fetch.ai agents.
 It allows users to:
 
