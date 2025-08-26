@@ -1,26 +1,18 @@
 {
+  "version": 1,
   "canisters": {
-    "bitcoin-loan-platform": {
+    "bitcoin_loan_backend": {
       "main": "src/bitcoin-loan-platform/main.mo",
       "type": "motoko"
     },
-    "bitcoin-loan-backend-backend": {
-      "main": "backend/bitcoin-loan-backend-backend/main.mo",
-      "type": "motoko"
-    },
     "frontend": {
-      "type": "assets",
-      "source": ["src/bitcoin-loan-platform/frontend"],
-      "dependencies": ["bitcoin-loan-backend-backend"]
+      "source": ["src/frontend"],
+      "type": "assets"
     }
   },
-  "dfx": "0.17.0",
-  "networks": {
-    "local": {
-      "bind": "127.0.0.1:4943",
-      "type": "ephemeral"
+  "defaults": {
+    "build": {
+      "packtool": ""
     }
-  },
-  "version": 1
+  }
 }
-

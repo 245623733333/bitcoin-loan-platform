@@ -1,6 +1,6 @@
 {
-    "loan_agent": {
-        "identity_key": "61cbcc458da23f38147ae8da78b5e6047840d54972c668e15250e9eb7c723840",
-        "wallet_key": "qZfiVkgpFUXXkxf4AQrLeBO5efkPOXUFmbfaw1lEEuY="
+    "LoanAgent": {
+        "identity_key": "9bd3a1470e5284623ce47e54427cace8ceb71445f933039e2733898707b4bf3c",
+        "wallet_key": "tnsdy/9xFm9tzm41xC1od/9HQs8K39N1zwszxf6ckds="
     }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "bitcoin-loan-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@dfinity/agent": "^0.18.0",
+    "@dfinity/candid": "^0.18.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
